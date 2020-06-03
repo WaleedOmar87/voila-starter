@@ -1,5 +1,5 @@
 const path = require('path');
-const appPath = path.join(__dirname, '../.');
+const appPath = path.join(__dirname, '../../.');
 const srcPath = appPath + '/assets/src';
 const distPath = appPath + '/assets/dist';
 

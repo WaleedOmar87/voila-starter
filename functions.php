@@ -4,10 +4,12 @@
 * @package voila
 */
 
+
 /**
-* Load Theme Features
+* Load Framework Files
 */
-require_once get_template_directory() . '/framework/register-theme-features.php';
+require_once get_template_directory() . '/framework/include-framework.php';
+
 
 /**
 * Load Template Functions

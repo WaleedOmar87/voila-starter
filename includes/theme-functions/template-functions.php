@@ -47,6 +47,7 @@ add_action('widgets_init', 'voila_register_widgets');
 
 /**
  * Enqueue Theme Assets
+ * TODO register theme assets
  */
 $voila_register_assets = new Voila_Register_Theme_Assets([
 	'style' => [
@@ -54,3 +55,31 @@ $voila_register_assets = new Voila_Register_Theme_Assets([
 		'src' => '#'
 	]
 ]);
+
+/**
+* Blog Pagination
+*/
+if (!function_exists('voila_blog_pagination')) {
+	function voila_blog_pagination()
+	{
+		$args = [];
+		$class = 'pagination';
+		if ($GLOBALS['wp_query']->max_num_pages <= 1) return;
+
+		$args = wp_parse_args($args, [
+			'mid_size'           => 2,
+			'type' => 'list',
+			'prev_text' => voila_get_icon('chevron-left'),
+			'next_text' => voila_get_icon('chevron-right'),
+			'screen_reader_text' => '',
+		]);
+
+		$links     = paginate_links($args);
+		$template  = apply_filters('voila_navigation_markup_template', '
+    <div class="pagination pagination-blog %1$s" role="navigation">
+				%3$s %4$s %5$s
+    </div>', $args, $class);
+
+		echo sprintf($template, $class, $args['screen_reader_text'], false, str_replace("<ul class='page-numbers", "<ul class='pagination", $links), false);
+	}
+}

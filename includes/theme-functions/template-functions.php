@@ -52,7 +52,11 @@ add_action('widgets_init', 'voila_register_widgets');
 $voila_register_assets = new Voila_Register_Theme_Assets([
 	'style' => [
 		'id' => 'voila-main',
-		'src' => '#'
+		'src' => get_stylesheet_directory_uri() . '/assets/dist/main.css'
+	] ,
+	'script' => [
+		'id' => 'voila-app' ,
+		'src' => get_stylesheet_directory_uri() . '/assets/dist/main.js'
 	]
 ]);
 

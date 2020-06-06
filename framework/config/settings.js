@@ -6,19 +6,9 @@ const distPath = appPath + '/assets/dist';
 module.exports = appSettings = {
 	configPath: path.join(__dirname, '.'),
 	appPath: appPath,
-	entry: srcPath + "/index.js",
-	roots: {
-		javascript: {
-			src: srcPath + "/javascript" ,
-			dist: "distPath" + '/javascript'
-		},
-		images: {
-			src: srcPath + '/images',
-			dist: distPath + '/images'
-		},
-		css: {
-			src: srcPath + '/css',
-			dist: distPath + '/css'
-		}
-	}
-}
+	distPath: distPath,
+	srcPath: srcPath ,
+	backend: "localhost:8888/wordpress_voila" ,
+	backendPath: 'http://localhost:8888/wordpress_voila',
+	entry: srcPath + "/index.js"
+};

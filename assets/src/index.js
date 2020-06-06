@@ -1,1 +1,2 @@
-alert('hi there');
+require('./javascript/main.js');
+require('./css/main.css');

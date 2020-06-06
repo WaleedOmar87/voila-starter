@@ -1,16 +1,32 @@
-/* Server Configurations */
-require("./settings");
-const webpack = require("webpack");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+/* Build Theme Assets */
 
+// Plugins
+require("./settings");
+const path = require("path");
+const webpack = require("webpack");
+const WebpackNotifierPlugin = require("webpack-notifier");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+// plugins
+let plugins = [
+	new webpack.LoaderOptionsPlugin({
+		minimize: true,
+	}),
+	new webpack.NamedModulesPlugin(),
+	new WebpackNotifierPlugin(),
+	new MiniCssExtractPlugin({
+		filename: '[name].css',
+		chunkFilename: '[id].css',
+	}),
+];
+
+// Configuration
 const config = {
 	entry: appSettings.entry,
-	mode: "development",
-	devtool: "source-map",
+	mode: "production",
 	output: {
 		filename: "[name].js",
-		path: appSettings.distPath,
+		path: appSettings.distPath, // path.resolve(__dirname,  '../dist/'),
 	},
 	module: {
 		rules: [
@@ -43,20 +59,7 @@ const config = {
 			},
 		],
 	},
-	plugins: [
-		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-		}),
-		new webpack.NamedModulesPlugin(),
-		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css',
-		}),
-		new BrowserSyncPlugin({
-			proxy: appSettings.backendPath,
-			files: ["**/*.php"],
-		} , {reload: true}),
-	],
+	plugins: plugins,
 };
 
 module.exports = config;

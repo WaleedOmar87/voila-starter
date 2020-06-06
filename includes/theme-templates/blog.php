@@ -32,7 +32,9 @@ get_header();
 		wp_reset_query();
 		?>
 	</div>
-	<?php get_sidebar(); ?>
+	<div class="col-3">
+		<?php get_sidebar(); ?>
+	</div>
 </section>
 <?php
 

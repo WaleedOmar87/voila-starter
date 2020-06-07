@@ -8,7 +8,8 @@
 	"license": "GPL",
 	"scripts": {
 		"server": "webpack --watch --config framework/config/config.server.js",
-		"build": "webpack --config framework/config/config.build.js"
+		"build": "webpack --config framework/config/config.build.js",
+		"cleanup": "node theme-check.cleanup.js"
 	},
 	"devDependencies": {
 		"animejs": "^3.0.1",
@@ -33,6 +34,7 @@
 		"postcss-cssnext": "^3.1.0",
 		"postcss-import": "^12.0.1",
 		"postcss-loader": "^3.0.0",
+		"shelljs": "^0.8.4",
 		"style-loader": "^1.2.1",
 		"webpack": "^4.30.0",
 		"webpack-cli": "^3.3.2",

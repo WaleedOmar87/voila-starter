@@ -53,16 +53,20 @@ $voila_register_assets = new Voila_Register_Theme_Assets([
 	'style' => [
 		'id' => 'voila-main',
 		'src' => get_stylesheet_directory_uri() . '/assets/dist/main.css'
-	] ,
+	],
 	'script' => [
-		'id' => 'voila-app' ,
-		'src' => get_stylesheet_directory_uri() . '/assets/dist/main.js'
+		'id' => 'voila-app',
+		'src' => get_stylesheet_directory_uri() . '/assets/src/main.js'
+	],
+	'script' => [
+		'id' => 'voila-dev-main' ,
+		'src' => esc_url('http://localhost:3000/wordpress_voila/main.js')
 	]
 ]);
 
 /**
-* Blog Pagination
-*/
+ * Blog Pagination
+ */
 if (!function_exists('voila_blog_pagination')) {
 	function voila_blog_pagination()
 	{
@@ -87,3 +91,21 @@ if (!function_exists('voila_blog_pagination')) {
 		echo sprintf($template, $class, $args['screen_reader_text'], false, str_replace("<ul class='page-numbers", "<ul class='pagination", $links), false);
 	}
 }
+
+/**
+ * Single Post Meta
+ * @package voila
+ */
+add_action('voila_single_post_meta', function ($post_id) {
+	?>
+	<div class="post-meta">
+		<h2 class="post-title">
+			<a href="<?php echo esc_url(get_permalink($post_id)); ?>">
+				<?php echo get_the_title($post_id); ?></a>
+		</h2>
+		<span class="date">
+			<?php echo get_the_date('M d, Y', $post_id); ?>
+		</span>
+	</div>
+<?php
+}, 10, 1);

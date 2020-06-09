@@ -1,14 +1,28 @@
+/*
+	Config Settings
+
+	@themeRoot: absolute path of theme root
+	@dist: absolute path of dist folder
+	@src: absolute path of src folder
+	@config: absolute path of config folder , which the current file is stored in
+	@proxy.host: wordpress server name
+	@proxy.wp wordpress installation root , usually localhost:8888/wordpress
+	@entry: location of entry point
+*/
 const path = require('path');
-const appPath = path.join(__dirname, '../../.');
-const srcPath = appPath + '/assets/src';
-const distPath = appPath + '/assets/dist';
+const srcPath = path.resolve(__dirname, '../../assets/src');
+const distPath = path.resolve(__dirname, '../../assets/dist');
 
 module.exports = appSettings = {
-	configPath: path.join(__dirname, '.'),
-	appPath: appPath,
-	distPath: distPath,
-	srcPath: srcPath ,
-	backend: "localhost:8888/wordpress_voila" ,
-	backendPath: 'http://localhost:8888/wordpress_voila',
+	path: {
+		themeRoot: path.resolve(__dirname, '../../.'),
+		dist: distPath,
+		src: srcPath,
+		config: path.resolve(__dirname, '.')
+	},
+	proxy: {
+		host: 'localhost:8888',
+		wp: 'wordpress_voila'
+	},
 	entry: srcPath + "/index.js"
 };

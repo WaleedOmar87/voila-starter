@@ -3,14 +3,10 @@
 * Theme Functions
 * @package voila
 */
-
-
 /**
 * Load Framework Files
 */
 require_once get_template_directory() . '/framework/include-framework.php';
-
-
 /**
 * Load Template Functions
 */

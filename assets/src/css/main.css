@@ -1,3 +1,34 @@
+/*
+	|--------------------------------------------------------------------------
+	| Introduction
+	|--------------------------------------------------------------------------
+	|.This CSS file uses some modern CSS features that could be
+	| incompatible with some older browsers ,
+	| So this file should be compiled first using PostCSS.
+
+	| .This theme should contain a compiled and ready to use version
+		of this file , Usually under assets/css/dist
+		Please check the documentations for more information about using assets.
+*/
+
+/*
+	TABLE OF CONTENTS
+	1- RESET
+	2- TYPOGRAPHY AND ACCENT COLOR
+	3- BLOG
+	4- SINGLE POST
+	5-
+*/
+@import "settings.css";
+
+
+/*
+	1- RESET
+*/
 body {
-	color:  green;
+	font-size: var(--body-font-size);
+	color: var(--accent-color);
 }
+/*
+	2- TYPOGRAPHY AND ACCENT COLOR
+*/

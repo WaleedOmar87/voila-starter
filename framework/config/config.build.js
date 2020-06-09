@@ -2,10 +2,9 @@
 
 // Plugins
 require("./settings");
-const path = require("path");
 const webpack = require("webpack");
-const WebpackNotifierPlugin = require("webpack-notifier");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const purgecss = require('@fullhuman/postcss-purgecss');
 
 // plugins
 let plugins = [
@@ -13,7 +12,6 @@ let plugins = [
 		minimize: true,
 	}),
 	new webpack.NamedModulesPlugin(),
-	new WebpackNotifierPlugin(),
 	new MiniCssExtractPlugin({
 		filename: '[name].css',
 		chunkFilename: '[id].css',
@@ -26,23 +24,29 @@ const config = {
 	mode: "production",
 	output: {
 		filename: "[name].js",
-		path: appSettings.distPath, // path.resolve(__dirname,  '../dist/'),
+		path: appSettings.path.dist,
 	},
 	module: {
 		rules: [
 			{
 				test: /\.css$/i,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader
-					},
+					MiniCssExtractPlugin.loader,
 					"css-loader",
 					{
-						loader: "postcss-loader",
+						loader: 'postcss-loader',
 						options: {
-							config: {
-								path: appSettings.configPath + '/postcss.config.js'
-							}
+							ident: 'postcss',
+							plugins: (loader) => [
+								require('postcss-import')({ root: loader.resourcePath }),
+								require('postcss-preset-env')({
+									browsers: "since 2015"
+								}),
+								require('cssnano')(),
+								purgecss({
+									content: ['./**/*.php']
+								}),
+							]
 						},
 					},
 				],

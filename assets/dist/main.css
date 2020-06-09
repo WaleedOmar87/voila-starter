@@ -1,3 +1,1 @@
-body{color:green}
-
-/*# sourceMappingURL=main.css.map*/
+:root{--body-font-size:15px;--accent-color:#ff0}body{font-size:15px;font-size:var(--body-font-size);color:#ff0;color:var(--accent-color)}

@@ -5,7 +5,7 @@
  * @package voila
  */
 get_header();
-
+// TODO replace bootstrap code with tailwind
 ?>
 <section id="blog" class="section-page blog-default">
 	<div class="col-8">

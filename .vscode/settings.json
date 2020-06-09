@@ -4,6 +4,7 @@
 		"endforeach",
 		"fontawesome",
 		"kirki",
+		"purgecss",
 		"tgmpa"
 	],
 	"todo-tree.tree.scanMode": "workspace"

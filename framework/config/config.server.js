@@ -1,34 +1,49 @@
 /* Server Configurations */
+/*
+	Server Settings
+	- in order to get hmr to work you need to enqueue output js file in your theme
+	- for example , if the server is running on http://localhost:3000/wordpress
+	- the output file should be located at http://localhost:3000/wordpress/ENTRY.js
+*/
 require("./settings");
-const webpack = require("webpack");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const chokidar = require('chokidar');
 
 const config = {
 	entry: appSettings.entry,
-	mode: "development",
-	devtool: "source-map",
 	output: {
 		filename: "[name].js",
-		path: appSettings.distPath,
+		path: appSettings.path.dist
+	},
+	mode: "development",
+	devtool: "source-map",
+	devServer: {
+		// use chokidar to watch over any php file changes and force page refresh when it happens
+		before(app, server) {
+			chokidar.watch([
+				'./../../*.php' , './../../**/*.php'
+			]).on('all', function () {
+				server.sockWrite(server.sockets, 'content-changed');
+			})
+		},
+		port: 3000,
+		publicPath: 'http://' + appSettings.proxy.host + '/' + appSettings.proxy.wp,
+		historyApiFallback: true,
+		proxy: {
+			[`/${appSettings.proxy.wp}/**`]: {
+				target: 'http://' + appSettings.proxy.host,
+				changeOrigin: true
+			},
+		},
+		contentBase: [appSettings.path.themeRoot, appSettings.path.dist],
+		hot: true
 	},
 	module: {
 		rules: [
 			{
 				test: /\.css$/i,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader
-					},
+					"style-loader",
 					"css-loader",
-					{
-						loader: "postcss-loader",
-						options: {
-							config: {
-								path: appSettings.configPath + '/postcss.config.js'
-							}
-						},
-					},
 				],
 			},
 			{
@@ -43,20 +58,7 @@ const config = {
 			},
 		],
 	},
-	plugins: [
-		new webpack.LoaderOptionsPlugin({
-			minimize: true,
-		}),
-		new webpack.NamedModulesPlugin(),
-		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css',
-		}),
-		new BrowserSyncPlugin({
-			proxy: appSettings.backendPath,
-			files: ["**/*.php"],
-		} , {reload: true}),
-	],
+	plugins: [],
 };
 
 module.exports = config;

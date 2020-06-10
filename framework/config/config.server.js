@@ -54,6 +54,7 @@ const config = {
 					"style-loader",
 					"css-loader",
 					{
+						// postcss is not required here , but we need it in order to get @import to work when importing files from node_modules and to parse any css features that's not currently supported by chrome .
 						loader: "postcss-loader",
 						options: {
 							plugins: (loader) => [

@@ -7,6 +7,7 @@
 	@config: absolute path of config folder , which the current file is stored in
 	@proxy.host: wordpress server name
 	@proxy.wp wordpress installation root , usually localhost:8888/wordpress
+	@proxy.port webpack dev server proxy port
 	@entry: location of entry point
 */
 const path = require('path');
@@ -22,7 +23,8 @@ module.exports = appSettings = {
 	},
 	proxy: {
 		host: 'localhost:8888',
-		wp: 'wordpress_voila'
+		wp: 'wordpress_voila',
+		port: 3000
 	},
 	entry: srcPath + "/index.js"
 };

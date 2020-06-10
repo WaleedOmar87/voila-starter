@@ -56,7 +56,7 @@ $voila_register_assets = new Voila_Register_Theme_Assets([
 	],
 	'script' => [
 		'id' => 'voila-app',
-		'src' => get_stylesheet_directory_uri() . '/assets/src/main.js'
+		'src' => get_stylesheet_directory_uri() . '/assets/dist/main.js'
 	],
 	'script' => [
 		'id' => 'voila-dev-main' ,

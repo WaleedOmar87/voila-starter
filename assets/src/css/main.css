@@ -20,14 +20,15 @@
 	5-
 */
 @import "settings.css";
-
+@import "tailwindcss/dist/base.min.css";
+@import "tailwindcss/dist/components.min.css";
+@import "tailwindcss/dist/utilities.min.css";
 
 /*
 	1- RESET
 */
 body {
 	font-size: var(--body-font-size);
-	color: var(--accent-color);
 }
 /*
 	2- TYPOGRAPHY AND ACCENT COLOR

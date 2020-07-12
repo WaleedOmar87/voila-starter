@@ -4,4 +4,4 @@
 * @package voila
 */
 
-get_template_part('includes/theme-templates/blog');
+get_template_part('includes/theme-templates/template-blog');

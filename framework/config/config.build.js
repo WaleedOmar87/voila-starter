@@ -43,9 +43,10 @@ const config = {
 									browsers: "since 2015"
 								}),
 								require('cssnano')(),
-								purgecss({
-									content: ['./**/*.php']
-								}),
+								// TODO enable purge css for final build
+								// purgecss({
+								// 	content: ['./**/*.php']
+								// }),
 							]
 						},
 					},

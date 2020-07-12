@@ -1,11 +1,21 @@
 {
 	"cSpell.words": [
+		"behance",
 		"customizer",
 		"endforeach",
 		"fontawesome",
 		"kirki",
+		"kses",
 		"purgecss",
 		"tgmpa"
 	],
-	"todo-tree.tree.scanMode": "workspace"
+	"todo-tree.tree.scanMode": "workspace",
+	"peacock.color": "999649",
+	"workbench.colorCustomizations": {
+		"titleBar.activeBackground": "#999649",
+		"titleBar.activeForeground": "#15202b",
+		"titleBar.border": "#999649",
+		"titleBar.inactiveBackground": "#99964999",
+		"titleBar.inactiveForeground": "#15202b99"
+	}
 }

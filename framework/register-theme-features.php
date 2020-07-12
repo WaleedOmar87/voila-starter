@@ -69,9 +69,28 @@ function voila_content_width()
 }
 add_action('after_setup_theme', 'voila_content_width', 0);
 
+
+/**
+ * Allow More HTML tags in WordPress
+ */
+add_filter('wp_kses_allowed_html', function ($tags) {
+
+	$tags['svg'] = array(
+		'xmlns' => array(),
+		'fill' => array(),
+		'viewbox' => array(),
+		'role' => array(),
+		'aria-hidden' => array(),
+		'focusable' => array(),
+	);
+	$tags['path'] = array(
+		'd' => array(),
+		'fill' => array(),
+	);
+	return $tags;
+}, 10, 2);
 /**
  * Get Post Media
- * @package voila
  */
 add_action('voila_get_post_media', function ($post_id, $container = true) {
 
@@ -105,7 +124,7 @@ add_action('voila_get_post_media', function ($post_id, $container = true) {
 			if ($post_format === 'video' || $post_format === 'audio') :
 				?>
 			<div class="media-player">
-				<?php echo esc_html($iframe_to_print); ?>
+				<?php echo wp_kses($iframe_to_print, wp_kses_allowed_html('post')); ?>
 			</div>
 			<?php
 				elseif ($post_format === 'gallery' && function_exists('acf_photo_gallery')) :
@@ -128,7 +147,7 @@ add_action('voila_get_post_media', function ($post_id, $container = true) {
 				endif;
 
 			else :
-				echo esc_html($post_thumbnail);
+				echo wp_kses($post_thumbnail, wp_kses_allowed_html('post'));
 			endif;
 			?>
 	</div>
@@ -146,9 +165,51 @@ add_action('voila_post_tags', function ($post_id) {
 		<?php
 			if (!empty(get_the_tags($post_id))) {
 				foreach (get_the_tags($post_id)  as $tag) {
-					echo sprintf('<a href="%s">%s</a>',  esc_url($tag->url), esc_html($tag->name));
+					echo sprintf('<a href="%s">%s</a>',  esc_url($tag->url), wp_kses($tag->name, wp_kses_allowed_html('post')));
 				}
 			} ?>
 	</div>
 <?php
 }, 10, 1);
+
+/**
+ * Inline Navigation
+ * @var $theme_location , theme theme location that contains the menu
+ */
+if (!has_filter('voila_inline_navigation')) {
+	add_filter('voila_inline_navigation', function ($theme_location, $text_color = 'black') {
+
+		return wp_nav_menu([
+			'theme_location' => $theme_location,
+			'container_class' => 'inline-menu text-' . esc_html($text_color),
+			'depth' => 1
+
+		]);
+	}, 10, 2);
+}
+
+/**
+ * Social Icons
+ * return list of social icons
+ * @var $icons_list , list of icons each array element contains icon name and icon option id
+ */
+if (!has_filter('voila_social_icons')) {
+	add_filter('voila_social_icons', function ($icons_list, $color = 'white', $size = 'small') {
+
+		$icons = [];
+
+		foreach ($icons_list as $icon_id => $icon_option_id) {
+			$icon_url = get_theme_mod($icon_option_id, '#');
+			$icon = voila_get_icon($icon_id);
+			$icons[] = wp_sprintf(
+				'<a class="icon-%s icon-%s" href="%s">%s</a>',
+				esc_html($color),
+				esc_html($size),
+				esc_url($icon_url),
+				wp_kses($icon, wp_kses_allowed_html('post'))
+			);
+		}
+
+		return implode($icons);
+	}, 10, 3);
+}

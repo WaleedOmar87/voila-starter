@@ -1,0 +1,3 @@
+- Theme Name: Voila
+- Theme Author: Montu-Themes
+- For more information about the theme please visit our portfolio https://www.themeforest.net/user/montu-themes

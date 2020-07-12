@@ -4,12 +4,11 @@
  * Footer Section
  * @package voila
  */
-?>
 
-<footer>
-	Footer Section
-</footer>
+do_action('voila_footer');
+?>
 
 <?php wp_footer(); ?>
 </body>
+
 <head>

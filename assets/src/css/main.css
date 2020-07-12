@@ -13,23 +13,18 @@
 
 /*
 	TABLE OF CONTENTS
-	1- RESET
-	2- TYPOGRAPHY AND ACCENT COLOR
-	3- BLOG
-	4- SINGLE POST
-	5-
+	1- TYPOGRAPHY AND ACCENT COLOR
+	2- BLOG
+	3- SINGLE POST
 */
 @import "settings.css";
-@import "tailwindcss/dist/base.min.css";
-@import "tailwindcss/dist/components.min.css";
-@import "tailwindcss/dist/utilities.min.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "wordpress-reset.css";
 
 /*
-	1- RESET
+	1- TYPOGRAPHY AND ACCENT COLOR
 */
 body {
 	font-size: var(--body-font-size);
+	line-height: var(--body-line-height);
 }
-/*
-	2- TYPOGRAPHY AND ACCENT COLOR
-*/

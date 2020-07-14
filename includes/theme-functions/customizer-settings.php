@@ -69,56 +69,6 @@ $voila_customizer_settings = [
 				"default" => esc_html__("Search ..", 'voila')
 			],
 			[
-				"id" =>  "enable_custom_error_page",
-				"title" => esc_html__("Enable Custom Error Page", 'voila'),
-				"type" =>  "switch",
-				"default" =>  "on",
-				"choices" =>  [
-					"on" =>  "On",
-					"off" =>  "Off"
-				]
-			],
-			[
-				"id" =>  "error_background_image",
-				"title" => esc_html__("404 Page Background Image", 'voila'),
-				"type" =>  "image"
-			],
-			[
-				"id" =>  "error_title",
-				"title" => esc_html__("404 Error Page Title", 'voila'),
-				"type" =>  "textarea",
-				"default" => esc_html__("Looks Like You Are Lost", 'voila')
-			],
-			[
-				"id" =>  "error_message",
-				"title" => esc_html__("404 Error Message", 'voila'),
-				"type" =>  "textarea",
-				"default" => esc_html__("The page you're looking for is not available", 'voila')
-			],
-			[
-				"id" =>  "coming_soon_message",
-				"title" => esc_html__("Coming Soon Page Message", 'voila'),
-				"type" =>  "textarea",
-				"default" => esc_html__("Coming Soon", 'voila')
-			],
-			[
-				"id" =>  "coming_soon_date",
-				"title" => esc_html__("Coming Soon Date", 'voila'),
-				"type" =>  "date",
-				"default" =>  "2020-1-1"
-			],
-			[
-				"id" =>  "coming_soon_link",
-				"title" => esc_html__("Coming Soon URL", 'voila'),
-				"type" =>  "text",
-				"default" =>  "#"
-			],
-			[
-				"id" =>  "coming_soon_background_image",
-				"title" => esc_html__("Coming Soon Background Image", 'voila'),
-				"type" =>  "image"
-			],
-			[
 				"id" =>  "enable_gototop",
 				"title" => esc_html__("Enable Go To Top Button", 'voila'),
 				"type" =>  "switch",
@@ -191,77 +141,13 @@ $voila_customizer_settings = [
 					"on" =>  "On",
 					"off" =>  "Off"
 				]
-			],
-			[
-				"id" =>  "enable_careers_in_single_post",
-				"title" => esc_html__("Enable Career Column In Single Post", 'voila'),
-				"desc" => esc_html__("Enable careers column in single portfolio post page.", 'voila'),
-				"type" =>  "switch",
-				"default" =>  "on",
-				"choices" =>  [
-					"on" =>  "On",
-					"off" =>  "Off"
-				]
-			],
-			[
-				"id" =>  "enable_contact_in_single_post",
-				"title" => esc_html__("Enable Contact Column In Single Post", 'voila'),
-				"desc" => esc_html__("Enable contact us column in single portfolio post page.", 'voila'),
-				"type" =>  "switch",
-				"default" =>  "on",
-				"choices" =>  [
-					"on" =>  "On",
-					"off" =>  "Off"
-				]
-			],
-			[
-				"id" =>  "start_project_button_url",
-				"title" => esc_html__("Start A Project Button URL", 'voila'),
-				"type" =>  "text",
-				"default" =>  ""
-			],
-			[
-				"id" =>  "start_project_button_text",
-				"title" => esc_html__("Start A Project Button Text", 'voila'),
-				"type" =>  "text",
-				"default" => esc_html__("Start A Project", 'voila')
-			],
-			[
-				"id" =>  "careers_title",
-				"title" => esc_html__("Careers Section Title", 'voila'),
-				"type" =>  "textarea",
-				"default" => esc_html__("Let's write your story, together.", 'voila')
-			],
-			[
-				"id" =>  "careers_subtitle",
-				"title" => esc_html__("Careers Section Subtitle", 'voila'),
-				"type" =>  "textarea",
-				"default" => esc_html__("We do not tell you our story. We write it together. Partnering with us means a seat at the table where you will be heard.", 'voila')
-			],
-			[
-				"id" =>  "contact_us_url",
-				"title" => esc_html__("Contact Us URL", 'voila'),
-				"type" =>  "text",
-				"default" =>  ""
-			],
-			[
-				"id" =>  "contact_us_text",
-				"title" => esc_html__("Contact Us Button Text", 'voila'),
-				"type" =>  "text",
-				"default" => esc_html__("Contact US.", 'voila')
 			]
 		]
 	],
 	"footer_settings" =>  [
 		"title" => esc_html__("Footer Settings", 'voila'),
 		"desc" => esc_html__("Edit Footer Settings", 'voila'),
-		"fields" =>  [
-			[
-				"id" =>  "footer_background",
-				"title" => esc_html__("Footer Background Image", 'voila'),
-				"type" =>  "image"
-			]
-		]
+		"fields" =>  []
 	],
 	"social_settings" =>  [
 		"title" => esc_html__("Social Media Settings", 'voila'),
@@ -353,12 +239,12 @@ $voila_customizer_settings = [
 				'label' => esc_html__('Body Typography', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-family'    => 'Hind',
-					'variant'        => 'regular',
+					'font-family'    => 'Montserrat',
+					'variant'        => 'normal',
 					'font-size'      => '15px',
 					'line-height'    => '1.6',
-					'font-weight' => '300',
-					'color'          => '#96979b',
+					'font-weight' => '400',
+					'color'          => '#525252',
 					'text-transform' => 'none',
 					'text-align'     => 'left',
 				],
@@ -366,9 +252,8 @@ $voila_customizer_settings = [
 					'fonts' => [
 						'google' => ['popularity', 30],
 						'standard' => [
-							'Hind',
-							'Poppins',
-							'Roboto',
+							'Montserrat',
+							'Rubik'
 						],
 					],
 				],
@@ -381,14 +266,14 @@ $voila_customizer_settings = [
 				'label' => esc_html__('Heading Typography', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-family'    => 'Poppins'
+					'font-family'    => 'Rubik'
 				],
 				'choices' => [
 					'fonts' => [
 						'google' => ['popularity', 30],
 						'standard' => [
-							'Poppins',
-							'Hind',
+							'Rubik',
+							'Montserrat',
 							'Roboto',
 						],
 					],
@@ -402,7 +287,7 @@ $voila_customizer_settings = [
 				'label' => esc_html__('H1 Font Size', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-size'    => '48px'
+					'font-size'    => '42px'
 				]
 			] ,
 			[
@@ -411,7 +296,7 @@ $voila_customizer_settings = [
 				'label' => esc_html__('H2 Font Size', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-size'    => '36px'
+					'font-size'    => '32px'
 				]
 			] ,
 			[
@@ -420,7 +305,7 @@ $voila_customizer_settings = [
 				'label' => esc_html__('H3 Font Size', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-size'    => '24px'
+					'font-size'    => '28px'
 				]
 			] ,
 			[
@@ -429,7 +314,7 @@ $voila_customizer_settings = [
 				'label' => esc_html__('H4 Font Size', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-size'    => '18px'
+					'font-size'    => '26px'
 				]
 			] ,
 			[
@@ -438,7 +323,16 @@ $voila_customizer_settings = [
 				'label' => esc_html__('H5 Font Size', 'voila'),
 				'type'        => 'typography',
 				'default'     => [
-					'font-size'    => '16px'
+					'font-size'    => '20px'
+				]
+			] ,
+			[
+				'id' => 'h6_font_size',
+				'title' => esc_html__('H6 Font Size', 'voila'),
+				'label' => esc_html__('H6 Font Size', 'voila'),
+				'type'        => 'typography',
+				'default'     => [
+					'font-size'    => '15px'
 				]
 			] ,
 		]
